@@ -14,6 +14,8 @@ div.subtitles > div {
   left: 0px;
   opacity: 0;
   -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
 }
 
 div.subtitles > div.active {
@@ -23,10 +25,13 @@ div.subtitles > div.active {
 </style>
 <video src="http://videos.mozilla.org/serv/webmademovies/wtfpopcorn.ogv" class="primary-sync-source" controls></video>
 <div class="subtitles">
-  <div data-active-during="1-3">
+  <div data-active-during="0.5-3">
     This is a <a href="http://popcornjs.org">silly</a> demo.
   </div>
-  <div data-active-during="3-8">
+  <div data-active-during="00:00:04-00:00:08">
     Of a very odd tool.
+  </div>
+  <div data-active-during="01:04-01:08">
+    Farewell!
   </div>
 </div>
