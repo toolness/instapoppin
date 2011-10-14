@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Cornish Unit Tests</title>
+<link rel="stylesheet" href="qunit.css">
+
+<script src="qunit.js"></script>
+<script src="../cornish.js"></script>
+
+<script>
+module("Cornish.parseDurations()");
+
+test("errors thrown when input can't be parsed", function() {
+  function ensureFails(str) {
+    raises(function() {
+      Cornish.parseDurations(str);
+    }, Cornish.ParseError, "'" + str + "' fails");    
+  }
+  
+  ensureFails("blah");
+  ensureFails();
+  ensureFails('');
+  ensureFails("1");
+  ensureFails("1-2-3");
+  ensureFails("1,2-3");
+  ensureFails("1:05");
+  ensureFails("1:05:24:23-");
+  ensureFails("1:05-1:fooble");
+});
+
+test("durations provided when input can be parsed", function() {
+  function ensureWorks(str, expected) {
+    deepEqual(Cornish.parseDurations(str), expected,
+              "Cornish.parseDurations('" + str + "') works");
+  }
+  
+  ensureWorks("1-5",  [{start: 1, end: 5}]);
+  ensureWorks("1:05-1:20", [{start: 65, end: 80}]);
+  ensureWorks("-1:00:20", [{start: 0, end: 3620}]);
+  ensureWorks("20-", [{start: 20, end: Infinity}]);
+  ensureWorks("1:05-1:20", [{start: 65, end: 80}]);
+});
+</script>
+
+<h1 id="qunit-header">Cornish Unit Tests</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture"></div>
