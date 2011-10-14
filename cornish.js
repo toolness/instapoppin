@@ -1,4 +1,6 @@
 var Cornish = (function() {
+  var activateOnLoad = true;
+
   function ParseError(message) { this.message = message; }
   
   function getTimestampInSeconds(ts) {
@@ -57,8 +59,46 @@ var Cornish = (function() {
       
       throw new ParseError("unable to parse time durations: " + str);
     },
-    ParseError: ParseError
+    ParseError: ParseError,
+    preventDefault: function preventDefault() {
+      activateOnLoad = false;
+    },
+    getParticipatingElements: function() {
+      var elements = document.querySelectorAll('[data-active-during]');
+      var array = [];
+      for (var i = 0; i < elements.length; i++)
+        array.push(elements[i]);
+      return array;
+    },
+    addClass: function(element, name) {
+      element.classList.add(name);
+    },
+    removeClass: function(element, name) {
+      element.classList.remove(name);
+    }
   };
+  
+  window.addEventListener("DOMContentLoaded", function() {
+    if (!activateOnLoad)
+      return;
+    var pop = Popcorn('.primary-video');
+    Cornish.getParticipatingElements().forEach(function(elem) {
+      var activeDuring = elem.getAttribute('data-active-during');
+      var durations = Cornish.parseDurations(activeDuring);
+      durations.forEach(function(duration) {
+        pop.code({
+          start: duration.start,
+          end: duration.end,
+          onStart: function() {
+            Cornish.addClass(elem, 'active');
+          },
+          onEnd: function() {
+            Cornish.removeClass(elem, 'active');            
+          }
+        });
+      });
+    });
+  }, false);
   
   return self;
 })();
