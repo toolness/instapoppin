@@ -82,6 +82,10 @@ var Cornish = (function() {
     },
     removeClass: function(element, name) {
       element.classList.remove(name);
+    },
+    getActiveDurations: function(element) {
+      var activeDuring = element.getAttribute('data-active-during');
+      return Cornish.parseDurations(activeDuring);
     }
   };
 
@@ -106,8 +110,7 @@ var Cornish = (function() {
     }
     var pop = Popcorn(primaries[0]);
     Cornish.getParticipatingElements().forEach(function(elem) {
-      var activeDuring = elem.getAttribute('data-active-during');
-      var durations = Cornish.parseDurations(activeDuring);
+      var durations = Cornish.getActiveDurations(elem);
       durations.forEach(function(duration) {
         pop.code({
           start: duration.start,
