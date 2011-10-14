@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Cornish Test</title>
+<script src="popcorn.min.js"></script>
 <script src="cornish.js"></script>
-<div data-active-during="1-5">
-  bop bop
+<style>
+div.subtitles {
+  position: relative;
+}
+
+div.subtitles > div {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  -moz-transition: opacity 1s;
+}
+
+div.subtitles > div.active {
+  opacity: 1.0;
+  z-index: 500;
+}
+</style>
+<video src="http://videos.mozilla.org/serv/webmademovies/wtfpopcorn.ogv" class="primary-sync-source" controls></video>
+<div class="subtitles">
+  <div data-active-during="1-3">
+    This is a <a href="http://popcornjs.org">silly</a> demo.
+  </div>
+  <div data-active-during="3-8">
+    Of a very odd tool.
+  </div>
 </div>
-<div data-active-during="5-9">
-  bop
-</div>
-<div>
-  hi
-</div>
-<script>
-onload = function() {
-};
-</script>

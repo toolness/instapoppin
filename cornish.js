@@ -77,11 +77,27 @@ var Cornish = (function() {
       element.classList.remove(name);
     }
   };
+
+  function warn(txt) {
+     if (window.console && window.console.warn)
+      window.console.warn(txt);
+  }
   
   window.addEventListener("DOMContentLoaded", function() {
     if (!activateOnLoad)
       return;
-    var pop = Popcorn('.primary-video');
+    var videos = document.getElementsByTagName('video');
+    var primaries = document.querySelectorAll('.primary-sync-source');
+    if (primaries.length == 0) {
+      warn("No media elements with class 'primary-sync-source' " +
+           "found, aborting.");
+      return;
+    } else if (primaries.length > 1) {
+      warn("More than one media element with class 'primary-sync-source' " +
+           "found, aborting.");
+      return;
+    }
+    var pop = Popcorn(primaries[0]);
     Cornish.getParticipatingElements().forEach(function(elem) {
       var activeDuring = elem.getAttribute('data-active-during');
       var durations = Cornish.parseDurations(activeDuring);
