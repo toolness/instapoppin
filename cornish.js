@@ -1,3 +1,10 @@
+/*
+ * cornish.js version 0.1
+ *
+ * Copyright 2011, Mozilla Foundation
+ * Licensed under the MIT license
+ */
+
 var Cornish = (function() {
   var activateOnLoad = true;
 
