@@ -1,17 +1,17 @@
 var Cornish = (function() {
   function ParseError(message) { this.message = message; }
   
-  function getSegmentPart(part) {
-    if (part.length == 0)
-      return Infinity;
-    var timeParts = part.split(':');
+  function getTimestampInSeconds(ts) {
+    if (ts.length == 0)
+      return 0;
+    var timeParts = ts.split(':');
     realTimeParts = [];
     timeParts.forEach(function(number) {
       if (number.length == 0)
         number = '00';
       var floatNumber = parseFloat(number);
       if (isNaN(floatNumber))
-        throw new ParseError('unable to parse time: ' + part);
+        throw new ParseError('unable to parse time: ' + ts);
       realTimeParts.push(floatNumber);
     });
     switch (realTimeParts.length) {
@@ -29,7 +29,7 @@ var Cornish = (function() {
              realTimeParts[2];
       
       default:
-      throw new ParseError('too many colons in time: ' + part);
+      throw new ParseError('too many colons in time: ' + ts);
     }
   }
   
@@ -47,11 +47,9 @@ var Cornish = (function() {
             throw new ParseError("missing dash in segment:" + str);
           }
           var duration = {
-            start: getSegmentPart(segment[0]),
-            end: getSegmentPart(segment[1])
+            start: getTimestampInSeconds(segment[0]),
+            end: getTimestampInSeconds(segment[1]) || Infinity
           };
-          if (duration.start == Infinity)
-            duration.start = 0;
           durations.push(duration);
         });
         return durations;
