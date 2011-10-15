@@ -1,20 +1,64 @@
-<!doctype html>
-<html>
-  <head>
-    <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
-    <script src="instapoppin.js"></script>
-  </head>
-  <style>
-    .footnote { visibility: hidden; }
-    .footnote.active { visibility: visible; }
-  </style>
-  <body>
-    <p>This is <a href="http://popcornjs.org/popcorn-101">Popcorn 101</a> implemented using Instapoppin'.</p>
-    <video height="180" width="300" autoplay>
-      <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.mp4"></source>
-      <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv"></source>
-      <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.webm"></source>
-    </video>
-    <div class="footnote" data-active-during="2-6">Pop!</div>
-  </body>
-</html>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Instapoppin' 101</title>
+<style>
+body, html {
+  width: 60em;
+  margin: 0 auto;
+  background: #f0f0f0;
+  font-family: Futura;
+  color: #101010;
+}
+
+div.chunk.active {
+  background: yellow !important;
+}
+
+p.see-demo {
+}
+
+a {
+  color: inherit;
+}
+
+p.see-demo.active {
+  background: yellow;
+}
+
+div.gist {
+  clear: both;
+}
+
+span.subheading {
+  font-size: 9pt;
+  font-weight: normal;
+}
+</style>
+<link rel="stylesheet" href="https://gist.github.com/stylesheets/gist/embed.css">
+<script src="popcorn.min.js"></script>
+<script src="instapoppin.js"></script>
+<h1>Instapoppin' <span class="subheading">Making Popcorn With Just HTML and CSS</span></h1>
+
+<p>This is similar to the <a href="http://popcornjs.org/popcorn-101">Popcorn 101</a> tutorial, but doesn't require an author to know JavaScript when making web pages that react to web media.</p>
+
+<p class="see-demo" data-active-during="35-"><a href="popcorn-101-with-instapoppin.html">See the code in action</a>.</p>
+
+<audio controls autoplay>
+  <source src="101.ogg"></source>
+  <source src="101.mp3"></source>
+</audio>
+
+<div id="gist-1289911" class="gist">
+
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+              <div class="gist-highlight"><pre><div class="line" id="LC1"><span class="cp">&lt;!DOCTYPE html&gt;</span></div><div class="line" id="LC2"><span class="nt">&lt;html&gt;</span></div><div class="line" id="LC3">&nbsp;&nbsp;<span class="nt">&lt;head&gt;</span></div><div class="chunk" data-active-during="6-10"><div class="line" id="LC4">&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://popcornjs.org/code/dist/popcorn-complete.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span></div><div class="line" id="LC5">&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"instapoppin.js"</span><span class="nt">&gt;&lt;/script&gt;</span></div></div><div class="line" id="LC6">&nbsp;&nbsp;<span class="nt">&lt;/head&gt;</span></div><div class="line" id="LC7">&nbsp;&nbsp;<span class="nt">&lt;style&gt;</span></div><div class="chunk" data-active-during="30-35"><div class="line" id="LC8">&nbsp;&nbsp;&nbsp;&nbsp;<span class="nc">.footnote</span> <span class="p">{</span> <span class="k">visibility</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span> <span class="p">}</span></div><div class="line" id="LC9">&nbsp;&nbsp;&nbsp;&nbsp;<span class="nc">.footnote.active</span> <span class="p">{</span> <span class="k">visibility</span><span class="o">:</span> <span class="k">visible</span><span class="p">;</span> <span class="p">}</span></div></div><div class="line" id="LC10">&nbsp;&nbsp;<span class="nt">&lt;/style&gt;</span></div><div class="line" id="LC11">&nbsp;&nbsp;<span class="nt">&lt;body&gt;</span></div><div class="line" id="LC12">&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;video</span> <span class="na">height=</span><span class="s">"180"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">autoplay</span><span class="nt">&gt;</span></div><div class="line" id="LC13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"http://videos.mozilla.org/serv/webmademovies/popcornplug.mp4"</span><span class="nt">&gt;&lt;/source&gt;</span></div><div class="line" id="LC14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv"</span><span class="nt">&gt;&lt;/source&gt;</span></div><div class="line" id="LC15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"http://videos.mozilla.org/serv/webmademovies/popcornplug.webm"</span><span class="nt">&gt;&lt;/source&gt;</span></div><div class="line" id="LC16">&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;/video&gt;</span></div><div class="chunk" data-active-during="10-18"><div class="line" id="LC17">&nbsp;&nbsp;&nbsp;&nbsp;<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footnote"</span> <span class="na">data-active-during=</span><span class="s">"2-6"</span><span class="nt">&gt;</span>Pop!<span class="nt">&lt;/div&gt;</span></div></div><div class="line" id="LC18">&nbsp;&nbsp;<span class="nt">&lt;/body&gt;</span></div><div class="line" id="LC19"><span class="nt">&lt;/html&gt;</span></div><div class="line" id="LC20"><br></div></pre></div>
+          </div>
+
+          <div class="gist-meta">
+            <a href="https://gist.github.com/raw/1289911/9ebb9f831c41d46e01c4eb953ea6e90afa86efd1/popcorn-101-with-instapoppin.html" style="float:right;">view raw</a>
+            <a href="https://gist.github.com/1289911#file_popcorn_101_with_cornish.html" style="float:right;margin-right:10px;color:#666">popcorn-101-with-instapoppin.html</a>
+            <a href="https://gist.github.com/1289911">This Gist</a> brought to you by <a href="http://github.com">GitHub</a>.
+          </div>
+        </div>
+</div>
