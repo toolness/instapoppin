@@ -12,16 +12,16 @@ At the same time, I also know a lot of folks who know HTML and CSS but are very 
 
 ## Durations
 
-The `data-active-during` attribute is pretty flexible, and you can specify time intervals in a variety of formats. Here's some examples:
+The `data-active-during` attribute is pretty flexible, and you can specify time intervals in a variety of formats. Here's some example values:
 
-* `data-active-during="2-6"` means seconds two thru six.
-* `data-active-during="1:02-1:06"` means one minute and two seconds thru one minute and six seconds.
-* `data-active-during="32-"` means thirty-two seconds thru the end of the media.
-* `data-active-during="1-2, 3-5"` means seconds one thru two and seconds three thru five.
+* `"2-6"` means *seconds two thru six*.
+* `"1:02-1:06"` means *one minute and two seconds thru one minute and six seconds*.
+* `"32-"` means *thirty-two seconds thru the end of the media*.
+* `"1-2, 3-5"` means *seconds one thru two and seconds three thru five*.
 
 ## Sync Sources
 
-By default, Instapoppin' assumes the first media element in the page (`<audio>` or `<video>`) is the one to be synchronized against. However, if you have multiple media elements on the page, you can give one of them the `primary-sync-source` class to force Instapoppin' to use it.
+By default, Instapoppin' assumes the first media element in the page (audio or video) is the one to be synchronized against. However, if you have multiple media elements on the page, you can give one of them the `primary-sync-source` class to force Instapoppin' to use it.
 
 ## Troubleshooting
 
