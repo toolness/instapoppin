@@ -1,11 +1,11 @@
 /*
- * cornish.js version 0.1
+ * instapoppin.js version 0.1
  *
  * Copyright 2011, Mozilla Foundation
  * Licensed under the MIT license
  */
 
-var Cornish = (function() {
+var Instapoppin = (function() {
   var activateOnLoad = true;
 
   function ParseError(message) { this.message = message; }
@@ -85,7 +85,7 @@ var Cornish = (function() {
     },
     getActiveDurations: function(element) {
       var activeDuring = element.getAttribute('data-active-during');
-      return Cornish.parseDurations(activeDuring);
+      return Instapoppin.parseDurations(activeDuring);
     }
   };
 
@@ -109,17 +109,17 @@ var Cornish = (function() {
       return;
     }
     var pop = Popcorn(primaries[0]);
-    Cornish.getParticipatingElements().forEach(function(elem) {
-      var durations = Cornish.getActiveDurations(elem);
+    Instapoppin.getParticipatingElements().forEach(function(elem) {
+      var durations = Instapoppin.getActiveDurations(elem);
       durations.forEach(function(duration) {
         pop.code({
           start: duration.start,
           end: duration.end,
           onStart: function() {
-            Cornish.addClass(elem, 'active');
+            Instapoppin.addClass(elem, 'active');
           },
           onEnd: function() {
-            Cornish.removeClass(elem, 'active');            
+            Instapoppin.removeClass(elem, 'active');            
           }
         });
       });
