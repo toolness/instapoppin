@@ -1,37 +1,20 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Instapoppin' Test</title>
-<script src="popcorn.min.js"></script>
-<script src="instapoppin.js"></script>
-<style>
-div.subtitles {
-  position: relative;
-}
-
-div.subtitles > div {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  opacity: 0;
-  -moz-transition: opacity 1s;
-  -webkit-transition: opacity 1s;
-  -o-transition: opacity 1s;
-}
-
-div.subtitles > div.active {
-  opacity: 1.0;
-  z-index: 500;
-}
-</style>
-<video src="http://videos.mozilla.org/serv/webmademovies/wtfpopcorn.ogv" class="primary-sync-source" controls></video>
-<div class="subtitles">
-  <div data-active-during="0.5-3">
-    This is a <a href="http://popcornjs.org">silly</a> demo.
-  </div>
-  <div data-active-during="00:00:04-00:00:08">
-    Of a very odd tool.
-  </div>
-  <div data-active-during="01:04-01:08">
-    Farewell!
-  </div>
-</div>
+<!doctype html>
+<html>
+  <head>
+    <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+    <script src="instapoppin.js"></script>
+  </head>
+  <style>
+    .footnote { visibility: hidden; }
+    .footnote.active { visibility: visible; }
+  </style>
+  <body>
+    <p>This is <a href="http://popcornjs.org/popcorn-101">Popcorn 101</a> implemented using Instapoppin'.</p>
+    <video height="180" width="300" class="primary-sync-source" autoplay>
+      <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.mp4"></source>
+      <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv"></source>
+      <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.webm"></source>
+    </video>
+    <div class="footnote" data-active-during="2-6">Pop!</div>
+  </body>
+</html>
