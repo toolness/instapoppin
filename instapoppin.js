@@ -93,16 +93,28 @@ var Instapoppin = (function() {
      if (window.console && window.console.warn)
       window.console.warn(txt);
   }
+
+  function info(txt) {
+    if (window.console && window.console.info)
+     window.console.info(txt);
+  }
   
   window.addEventListener("DOMContentLoaded", function() {
     if (!activateOnLoad)
       return;
-    var videos = document.getElementsByTagName('video');
     var primaries = document.querySelectorAll('.primary-sync-source');
     if (primaries.length == 0) {
-      warn("No media elements with class 'primary-sync-source' " +
-           "found, aborting.");
-      return;
+      var mediaElements = document.querySelectorAll('video, audio');
+      
+      if (mediaElements.length == 0) {
+        warn("No media elements found on the page, aborting.");
+        return;
+      } else {
+        info("No media elements found with class 'primary-sync-source', " +
+             "using the first <" + mediaElements[0].nodeName + "> element " +
+             "on the page.");
+        primaries = mediaElements;
+      }
     } else if (primaries.length > 1) {
       warn("More than one media element with class 'primary-sync-source' " +
            "found, aborting.");
