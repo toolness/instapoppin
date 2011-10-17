@@ -22,6 +22,7 @@ The `data-active-during` attribute is pretty flexible, and you can specify time 
 * `1:02-1:06` means *one minute and two seconds thru one minute and six seconds*.
 * `32-` means *thirty-two seconds thru the end of the media*.
 * `1-2, 3-5` means *seconds one thru two and seconds three thru five*.
+* `-0.5` means *the beginning of the media thru half a second in*.
 
 ## Sync Sources
 
