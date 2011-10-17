@@ -18,10 +18,10 @@ At the same time, I also know a lot of folks who know HTML and CSS but are very 
 
 The `data-active-during` attribute is pretty flexible, and you can specify time intervals in a variety of formats. Here's some example values:
 
-* `"2-6"` means *seconds two thru six*.
-* `"1:02-1:06"` means *one minute and two seconds thru one minute and six seconds*.
-* `"32-"` means *thirty-two seconds thru the end of the media*.
-* `"1-2, 3-5"` means *seconds one thru two and seconds three thru five*.
+* `2-6` means *seconds two thru six*.
+* `1:02-1:06` means *one minute and two seconds thru one minute and six seconds*.
+* `32-` means *thirty-two seconds thru the end of the media*.
+* `1-2, 3-5` means *seconds one thru two and seconds three thru five*.
 
 ## Sync Sources
 
