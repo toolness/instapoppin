@@ -154,7 +154,7 @@ var Instapoppin = (function() {
     Instapoppin.getParticipatingElements().forEach(function(elem) {
       var durations = Instapoppin.getActiveDurations(elem);
       durations.forEach(function(duration) {
-        pop.code({
+        pop.simplecode({
           start: duration.start,
           end: duration.end,
           onStart: function() {
@@ -167,6 +167,19 @@ var Instapoppin = (function() {
       });
     });
   }, false);
+  
+  // This is just like Popcorn's code plugin, but even simpler
+  // because we don't need an onFrame callback.
+  Popcorn.plugin("simplecode", function(options) {
+    return {
+      start: function(event, options) {
+        options.onStart();
+      },
+      end: function(event, options) {
+        options.onEnd();
+      }
+    };
+  });
   
   return self;
 })();
