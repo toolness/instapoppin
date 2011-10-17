@@ -1,5 +1,5 @@
 /*
- * instapoppin.js version 0.1
+ * instapoppin.js version 0.2
  *
  * Copyright 2011, Mozilla Foundation
  * Licensed under the MIT license
@@ -77,18 +77,48 @@ var Instapoppin = (function() {
         array.push(elements[i]);
       return array;
     },
-    addClass: function(element, name) {
-      element.classList.add(name);
-    },
-    removeClass: function(element, name) {
-      element.classList.remove(name);
-    },
     getActiveDurations: function(element) {
       var activeDuring = element.getAttribute('data-active-during');
       return Instapoppin.parseDurations(activeDuring);
     }
   };
 
+  // Taken from http://hacks.mozilla.org/2010/01/classlist-in-firefox-3-6/
+  var addClass = function (elm, className) {
+      if (document.documentElement.classList) {
+          addClass = function (elm, className) {
+              elm.classList.add(className);
+          }
+      } else {
+          addClass = function (elm, className) {
+              if (!elm) {
+                  return false;
+              }
+              if (!containsClass(elm, className)) {
+                  elm.className += (elm.className ? " " : "") + className;
+              }
+          }
+      }
+      addClass(elm, className);
+  }
+
+  var removeClass = function (elm, className) {
+      if (document.documentElement.classList) {
+          removeClass = function (elm, className) {
+              elm.classList.remove(className);
+          }
+      } else {
+          removeClass = function (elm, className) {
+              if (!elm || !elm.className) {
+                  return false;
+              }
+              var regexp = new RegExp("(^|\\s)" + className + "(\\s|$)", "g");
+              elm.className = elm.className.replace(regexp, "$2");
+          }
+      }
+      removeClass(elm, className);
+  }
+  
   function warn(txt) {
      if (window.console && window.console.warn)
       window.console.warn(txt);
@@ -128,10 +158,10 @@ var Instapoppin = (function() {
           start: duration.start,
           end: duration.end,
           onStart: function() {
-            Instapoppin.addClass(elem, 'active');
+            addClass(elem, 'active');
           },
           onEnd: function() {
-            Instapoppin.removeClass(elem, 'active');            
+            removeClass(elem, 'active');            
           }
         });
       });
