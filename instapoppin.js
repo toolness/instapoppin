@@ -1,5 +1,5 @@
 /*
- * instapoppin.js version 0.2
+ * instapoppin.js version 0.3
  *
  * Copyright 2011, Mozilla Foundation
  * Licensed under the MIT license
