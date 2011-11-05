@@ -43,6 +43,7 @@ var Instapoppin = (function() {
   }
   
   var self = {
+    primarySyncSource: null,
     parseDurations: function parseDurations(str) {
       var durations = [];
       if (typeof(str) == 'string') {
@@ -70,8 +71,10 @@ var Instapoppin = (function() {
     preventDefault: function preventDefault() {
       activateOnLoad = false;
     },
-    getParticipatingElements: function() {
-      var elements = document.querySelectorAll('[data-active-during]');
+    getParticipatingElements: function(attr) {
+      if (!attr)
+        attr = "data-active-during";
+      var elements = document.querySelectorAll('[' + attr + ']');
       var array = [];
       for (var i = 0; i < elements.length; i++)
         array.push(elements[i]);
@@ -150,7 +153,9 @@ var Instapoppin = (function() {
            "found, aborting.");
       return;
     }
-    var pop = Popcorn(primaries[0]);
+    
+    self.primarySyncSource = primaries[0];
+    var pop = Popcorn(self.primarySyncSource);
     Instapoppin.getParticipatingElements().forEach(function(elem) {
       var durations = Instapoppin.getActiveDurations(elem);
       durations.forEach(function(duration) {
@@ -166,6 +171,10 @@ var Instapoppin = (function() {
         });
       });
     });
+    
+    var activationEvent = document.createEvent("Event");
+    activationEvent.initEvent("instapoppinactive", true, false);
+    document.dispatchEvent(activationEvent);
   }, false);
   
   // This is just like Popcorn's code plugin, but even simpler
